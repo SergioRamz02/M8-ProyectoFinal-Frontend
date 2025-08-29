@@ -28,7 +28,7 @@ export default function Login() {
     }
 
     return(
-        <div className="mas-w-md mx-auto">
+        <div className="max-w-md mx-auto">
             <Card>
                 <h1 className="text-2xl font-semibold mb-2"> Bienvenido a {import.meta.env.VITE_APP_NAME || "LA PLATAFORMA"}</h1>
                 <p className="opacity-80 mb-6">Tu sesión permanecerá activa tras recargar.</p>
@@ -46,11 +46,11 @@ export default function Login() {
                     {error && <p className="text-red-600 text-sm">{error}</p>}
                     <Button disabled={loading}>{loading ? 'Ingresando...' : 'Entrar'}</Button>
                 </form>
-                
+
                 <p className="text-sm mt-4">
                     ¿No tienes cuenta? <Link to="/register" className="underline">Registrate</Link>
                 </p>
-
+                
             </Card>
         </div>
     )

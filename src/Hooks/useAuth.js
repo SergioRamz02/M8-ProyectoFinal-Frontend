@@ -29,7 +29,7 @@ const useAuth = create(
               return res;
           },
 
-          logOut: () =>({token: null, refreshToken: null, user: null}),
+          logOut: () => set({token: null, refreshToken: null, user: null}),
 
        }),
        {
