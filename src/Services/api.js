@@ -25,6 +25,15 @@ export async function getEvent(id) {
     return data;
 }
 
+export async function getOccupiedSeats(eventId) {
+    try {
+    const { data } = await http.get(`/events/${eventId}/occupied`)
+    return data
+    } catch {
+    return { occupied: [] }
+  }
+}
+
 export async function createEvent(payload) {
     const { data } = await http.post('/events', payload);
     return data;

@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Events from './Pages/Events';
+import EventDetail from './Pages/EventDetail';
+import Scan from './Pages/Scan';
 import CreateEvent from './Pages/CreateEvent';
 import NotFound from './Pages/NotFound';
 import useAuth from './Hooks/useAuth';
@@ -34,6 +37,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
+            <Route path='/events' element={<Events/>} />
+            <Route path='/events/: id' element={<EventDetail/>} />
             <Route 
               path='/events/new' 
               element={
@@ -42,6 +47,14 @@ function App() {
               </ProtectedRoute>
             }
             />
+            <Route
+                 path='/scan' 
+                 element={ 
+                  <ProtectedRoute>
+                    { hasRole('organizer','admin','staff') ? <Scan /> : <NotFound />}
+                  </ProtectedRoute>
+                }
+                />
             <Route path='*' element={<NotFound/>} />
             
         </Routes>
