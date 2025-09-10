@@ -9,9 +9,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
     const { login } = useAuth();
-
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/events';
@@ -19,12 +17,9 @@ export default function Login() {
     const onSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); setError(null);
-        try {
-            await login({email, password}); navigate(from, {replace: true});
-        } catch (err) {
-            setError(err?.message || 'No se pudo iniciar sesión');
-        }
-        finally { setLoading(false)}
+        try { await login({email, password}); navigate(from, {replace: true});} 
+        catch (err) {setError(err?.message || 'No se pudo iniciar sesión');}
+        finally { setLoading(false) }
     }
 
     return(
@@ -38,7 +33,6 @@ export default function Login() {
                         <label className="label">Correo</label>
                         <input className="input" value={email} onChange={(e) => setEmail(e.target.value)} type="email" required/>
                     </div>
-
                     <div>
                         <label className="label">Contraseña</label>
                         <input className="input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" required/>

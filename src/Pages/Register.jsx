@@ -8,7 +8,6 @@ export default function Register() {
     const [form, setForm] = useState({name: '', email: '', password: '', role: ''});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
     const { register } = useAuth();
     const navigate = useNavigate();
     
@@ -20,9 +19,7 @@ export default function Register() {
         try {
             await register(form); 
             navigate('/events', {replace: true});
-        } catch (err) {
-            setError(err?.message || 'No se pudo iniciar sesión');
-        }
+        } catch (err) {setError(err.message) }
         finally { setLoading(false)}
     }
 
@@ -37,12 +34,10 @@ export default function Register() {
                         <label className="label">Nombre</label>
                         <input className="input" name="name" value={form.name} onChange={onChange} required/>
                     </div>
-
                     <div>
                         <label className="label">Correo electrónico</label>
                         <input className="input" name="email" value={form.email} onChange={onChange} type="email" required/>
                     </div>
-
                     <div>
                         <label className="label">Contraseña</label>
                         <input className="input" name="password" value={form.password} onChange={onChange} type="password" required/>
@@ -59,7 +54,6 @@ export default function Register() {
                     {error && <p className="text-red-600 text-sm">{error}</p>}
                     <Button disabled={loading}>{loading ? 'Creando...' : 'Crear'}</Button>
                 </form>
-
             </Card>
         </div>
     )

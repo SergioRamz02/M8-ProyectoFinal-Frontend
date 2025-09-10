@@ -5,7 +5,7 @@ export default function NotFound() {
         <div className="text-center py-20">
             <h1 className="text-3xl font-semibold mb-2">Página no encontrada</h1>
             <p className="opacity-80 mb-6">La ruta que intentas abrir no existe o fue removida</p>
-            <Link to='/' className="btn btn-primary">Volver al inicio</Link>
+            <Link className="btn btn-primary" to='/'>Volver al inicio</Link>
         </div>
     );
 }
