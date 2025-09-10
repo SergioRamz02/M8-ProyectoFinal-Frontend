@@ -1,4 +1,4 @@
-import jsQR from 'jsqr'
+import jsQR from 'jsqr';
 
 export async function decodeQrFromImageFile(file) {
   const img = await loadImageFromFile(file)
