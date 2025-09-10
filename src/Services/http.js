@@ -12,10 +12,12 @@ http.interceptors.request.use((config) => {
     return config;
 })
 
-http.interceptors.response.use((res) => res, 
+http.interceptors.response.use(
+(res) => res, 
 (error)=>{
     const message = error?.response?.data?.message || error?.message || 'Error de red'
     return Promise.reject(new Error(message));
-})
+  }
+)
 
 export default http;
